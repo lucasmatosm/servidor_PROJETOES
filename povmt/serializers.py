@@ -4,7 +4,15 @@ from povmt.models import User
 from povmt.models import Tinvestido
 
 
+class TIserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tinvestido
+        fields = ('data', 'horas', 'id_usuario')
 
+class TISerializerID(serializers.ModelSerializer):
+    class Meta:
+        model = Tinvestido
+        
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -16,12 +24,5 @@ class UserSerializerID(serializers.ModelSerializer):
         model = User
 
 
-class TIserializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tinvestido
-        fields = ('data', 'horas', 'id_usuario')
 
-class TISerializerID(serializers.ModelSerializer):
-    class Meta:
-        model = Tinvestido
 

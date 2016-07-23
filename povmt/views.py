@@ -39,7 +39,7 @@ def cria_usuario(request):
 @api_view(['GET','POST'])
 def criati(request, id_usuario):
     if request.method == 'GET':
-        tilist = Tinvestido.objects.get(id_usuario=id_usuario)
+        tilist = Tinvestido.objects.filter(id_usuario=id_usuario)
         serializer = TISerializerID(tilist, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
