@@ -39,6 +39,8 @@ def criaAtividade(request, id_usuario):
         return Response(serializer.errors, status=400)
 
 
+
+
 @api_view(['GET','POST'])
 def criaTI(request, id_atividade):
     if request.method == 'GET':
@@ -58,17 +60,17 @@ def criaTI(request, id_atividade):
         return Response(serializer.errors, status=400)
 
 @api_view(['GET','PUT'])
-def editaTI(request, id):
+def editaTI(request, id_atividade, id):
     if request.method == 'GET':
         ti = Tinvestido.objects.get(pk=id)
         serializer = TISerializer(ti, many=False)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        ti = Tinvestido.objects.get(pk=id)
-        data = request.data
-        serializer = UsuarioSerializer(instance=ti, data=data)
+        ti = Tinvestido.objects.get(id_atividade=id_atividade, pk=id)
+        request.data['id_atividade'] = id_atividade
+        serializer = TISerializer(instance=ti, data=request.data)
         if serializer.is_valid():
-            serializer.update(ti, data)
+            serializer.save()
             return Response(status=201)
         return Response(serializer.errors, status=400)
 
@@ -99,3 +101,11 @@ def recuperaAti(request, id):
 
 
 
+@api_view(['GET'])
+def getAtividade(request, id):
+    print id
+    if request.method == 'GET':
+        ati = Atividade.objects.get(pk=id)
+        print ati
+        serializer = AtividadeSerializer(ati, many=False)
+        return Response(serializer.data)

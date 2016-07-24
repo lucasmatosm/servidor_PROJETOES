@@ -1,4 +1,5 @@
 from django.db import models
+from povmt.utils import download_path
 
 
 class Usuario(models.Model):
@@ -11,7 +12,7 @@ class Atividade(models.Model):
     nome = models.CharField(max_length=100, blank=True, default='')
     categoria = models.CharField(max_length=100, blank=True, default='')
     prioridade = models.CharField(max_length=100, blank=True, default='')
-    url_imagem = models.CharField(max_length=100, blank=True, default='')
+    url_imagem = models.ImageField(upload_to=download_path, default="media/No-img.jpg", null=True, blank=True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, db_column='id_usuario')
 
     def __unicode__(self):

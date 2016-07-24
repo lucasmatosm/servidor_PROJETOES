@@ -39,6 +39,7 @@ class TagSerializerID(serializers.ModelSerializer):
 
         
 class AtividadeSerializer(serializers.ModelSerializer):
+    url_imagem = serializers.ImageField(max_length=None, required=False, use_url=True)
     class Meta:
         model = Atividade
         fields = ('nome', 'categoria', 'prioridade', 'url_imagem', 'id_usuario', 'id')
