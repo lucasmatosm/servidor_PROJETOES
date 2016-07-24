@@ -13,7 +13,6 @@ PRÉ-REQUISITOS
 6 - Instalar as dependências:
 - pip install django
 - pip install djangorestframework
-- pip install django-rest_auth
 - pip install Pillow
 7 - Instalar a dependencia do MySQL-python através do comando 'pip install mysql-python'
 * Método alternativo em caso de falha: Download do .whl (http://www.lfd.uci.edu/~gohlke/pythonlibs/6kbpejrn/MySQL_python-1.2.5-cp27-none-win_amd64.whl) e execução do comando 'pip install MySQL_python-1.2.5-cp27-none-win_amd64.whl' no local do download.
